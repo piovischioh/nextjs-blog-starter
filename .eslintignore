@@ -16,3 +16,10 @@
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# config
+!.*
+
+# Contentlayer
+.contentlayer
+contentlayer.config.ts

@@ -9,9 +9,17 @@ module.exports = {
   ],
   rules: {
     semi: ['error', 'always'],
+    quotes: ['error', 'single'],
     'react/jsx-filename-extension': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'function-expression',
+      },
+    ],
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -24,7 +32,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'import'],
   root: true,
   settings: {
     'import/resolver': {
