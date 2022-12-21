@@ -2,12 +2,19 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { compareDesc } from 'date-fns';
+
 import { allPosts } from 'contentlayer/generated';
-import styles from '@/styles/Home.module.css';
 import type { Post } from 'contentlayer/generated';
+import styles from '@/styles/Home.module.css';
 
 interface PropsType {
   posts: Post[];
+}
+export function getStaticProps() {
+  const posts = allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date)),
+  );
+  return { props: { posts } };
 }
 
 const Index = ({ posts }: PropsType) => (
@@ -52,12 +59,5 @@ const Index = ({ posts }: PropsType) => (
     </footer>
   </div>
 );
-
-export function getStaticProps() {
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
-  );
-  return { props: { posts } };
-}
 
 export default Index;
