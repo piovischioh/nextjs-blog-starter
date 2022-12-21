@@ -1,6 +1,7 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { format, parseISO } from 'date-fns';
 import Head from 'next/head';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import { allPosts } from 'contentlayer/generated';
 import type { Post } from 'contentlayer/generated';
@@ -31,24 +32,28 @@ export const getStaticProps: GetStaticProps<PropsType> = ({ params }) => {
   };
 };
 
-const PostPage: NextPage<PropsType> = ({ post }: PropsType) => (
-  <div className={styles.container}>
-    <Head>
-      <title>{post.title}</title>
-      <meta name="description" content={post.description} />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
+  const MDXContent = useMDXComponent(post.body.code);
 
-    <main className={styles.main}>
-      <h1 className={styles.title}>{post.title}</h1>
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.description} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      <time dateTime={post.date}>
-        {format(parseISO(post.date), 'LLLL d, yyyy')}
-      </time>
+      <main className={styles.main}>
+        <h1 className={styles.title}>{post.title}</h1>
 
-      <div dangerouslySetInnerHTML={{ __html: post.body.html }} />
-    </main>
-  </div>
-);
+        <time dateTime={post.date}>
+          {format(parseISO(post.date), 'LLLL d, yyyy')}
+        </time>
+
+        <MDXContent />
+      </main>
+    </div>
+  );
+};
 
 export default PostPage;
