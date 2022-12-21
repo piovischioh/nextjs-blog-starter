@@ -22,4 +22,3 @@ next-env.d.ts
 
 # Contentlayer
 .contentlayer
-contentlayer.config.ts

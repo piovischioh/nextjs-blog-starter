@@ -20,6 +20,16 @@ module.exports = {
         unnamedComponents: 'function-expression',
       },
     ],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -36,6 +46,9 @@ module.exports = {
   root: true,
   settings: {
     'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+      },
       alias: {
         map: [['@', './src']],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],

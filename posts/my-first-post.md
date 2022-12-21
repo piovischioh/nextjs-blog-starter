@@ -2,7 +2,7 @@
 title: Sample post
 description: My first post
 slug: sample-post
-date: 2022-08-30
+date: 2022-12-21
 type: Post
 ---
 
