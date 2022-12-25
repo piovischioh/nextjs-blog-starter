@@ -5,6 +5,7 @@ module.exports = {
     'airbnb/hooks',
     'plugin:@next/next/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:tailwindcss/recommended',
     'prettier',
   ],
   rules: {
@@ -42,7 +43,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  plugins: ['@typescript-eslint', 'import'],
+  plugins: ['@typescript-eslint', 'import', 'tailwindcss'],
   root: true,
   settings: {
     'import/resolver': {
