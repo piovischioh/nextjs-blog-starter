@@ -4,6 +4,7 @@ import { compareDesc } from 'date-fns';
 
 import { allPosts } from 'contentlayer/generated';
 import type { Post } from 'contentlayer/generated';
+import ThemeSwitch from '@/components/ThemeSwitch';
 
 interface PropsType {
   posts: Post[];
@@ -23,15 +24,19 @@ const Index = ({ posts }: PropsType) => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <main className="p-4">
+    <main className="bg-white p-4 text-black dark:bg-black dark:text-white">
       <h1 className="mb-6 text-4xl font-bold">Welcome to my blog!</h1>
+
+      <div className="my-4">
+        <ThemeSwitch />
+      </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {posts.map((post) => (
           <Link
             key={post.slug}
             href={post.path}
-            className="rounded-lg border border-black p-6"
+            className="rounded-lg border border-black p-6 dark:border-white"
           >
             <h2 className="mb-4 text-2xl font-semibold">{post.title}</h2>
             <p>{post.description}</p>
