@@ -34,7 +34,7 @@ const Index = ({ posts }: PropsType) => (
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {posts.map((post) => (
           <Link
-            key={post.slug}
+            key={post.filename}
             href={post.path}
             className="rounded-lg border border-black p-6 dark:border-white"
           >

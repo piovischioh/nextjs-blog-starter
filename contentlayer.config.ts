@@ -13,19 +13,28 @@ export const Post = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
-    slug: {
-      type: 'string',
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
       required: true,
     },
     date: {
       type: 'date',
       required: true,
     },
+    draft: {
+      type: 'boolean',
+      required: true,
+    },
   },
   computedFields: {
     path: {
       type: 'string',
-      resolve: (post) => `/posts/${post.slug}`,
+      resolve: ({ _raw: { flattenedPath } }) => `/${flattenedPath}`,
+    },
+    filename: {
+      type: 'string',
+      resolve: ({ _raw: { sourceFileName } }) => sourceFileName.split('.')[0],
     },
   },
 }));

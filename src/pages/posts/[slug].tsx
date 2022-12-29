@@ -20,7 +20,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 };
 
 export const getStaticProps: GetStaticProps<PropsType> = ({ params }) => {
-  const post = allPosts.find((_post) => _post.slug === params?.slug);
+  const post = allPosts.find((_post) => _post.filename === params?.slug);
 
   if (!post) return { notFound: true };
 
