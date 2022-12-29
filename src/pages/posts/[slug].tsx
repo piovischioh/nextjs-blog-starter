@@ -3,8 +3,8 @@ import { format, parseISO } from 'date-fns';
 import Head from 'next/head';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
-import { allPosts } from 'contentlayer/generated';
 import type { Post } from 'contentlayer/generated';
+import { allPosts } from 'contentlayer/generated';
 
 interface PropsType {
   post: Post;

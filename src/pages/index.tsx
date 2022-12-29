@@ -2,8 +2,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { compareDesc } from 'date-fns';
 
-import { allPosts } from 'contentlayer/generated';
 import type { Post } from 'contentlayer/generated';
+import { allPosts } from 'contentlayer/generated';
 import ThemeSwitch from '@/components/ThemeSwitch';
 
 interface PropsType {
