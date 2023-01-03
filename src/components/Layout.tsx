@@ -1,13 +1,14 @@
 import type { ReactNode } from 'react';
 
 import navLinks from '@/data/navLinks';
-import ThemeSwitch from './ThemeSwitch';
 import Link from './Link';
+import MobileNav from './MobileNav';
+import ThemeSwitch from './ThemeSwitch';
 
 const Layout = ({ children }: { children: ReactNode }) => (
   <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
     <div className="flex h-screen flex-col justify-between">
-      <header className="flex items-center justify-between py-10">
+      <header className="flex items-center justify-between py-10 tracking-wider">
         <div>
           <Link href="/">
             <div className="flex items-center justify-between">
@@ -24,17 +25,29 @@ const Layout = ({ children }: { children: ReactNode }) => (
               <Link
                 key={link.title}
                 href={link.href}
-                className="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4"
+                className="p-1 text-gray-900 dark:text-gray-100 sm:p-4"
               >
                 {link.title}
               </Link>
             ))}
           </div>
           <ThemeSwitch />
+
+          <MobileNav />
         </div>
       </header>
+
       <main className="mb-auto">{children}</main>
-      {/* <Footer /> */}
+
+      <footer>
+        <div className="mt-16 mb-8 flex items-center justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <Link href="https://github.com/piovischioh/nextjs-blog-starter">
+            Next.js Blog Starter
+          </Link>
+          <div>{' • '}</div>
+          <div>{`© ${new Date().getFullYear()}`}</div>
+        </div>
+      </footer>
     </div>
   </div>
 );
