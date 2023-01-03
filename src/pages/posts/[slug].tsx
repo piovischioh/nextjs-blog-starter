@@ -1,6 +1,6 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { format, parseISO } from 'date-fns';
 import Head from 'next/head';
+import { format, parseISO } from 'date-fns';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import type { Post } from 'contentlayer/generated';
@@ -42,7 +42,7 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="prose dark:prose-invert">
         <h1>{post.title}</h1>
 
         <time dateTime={post.date}>
