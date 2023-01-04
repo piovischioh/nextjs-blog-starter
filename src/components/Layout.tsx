@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Image from 'next/image';
 
 import navLinks from '@/data/navLinks';
 import Link from './Link';
@@ -12,7 +13,14 @@ const Layout = ({ children }: { children: ReactNode }) => (
         <div>
           <Link href="/">
             <div className="flex items-center justify-between">
-              <div className="mr-3 text-6xl">👨🏻‍💻</div>
+              <div className="mr-3">
+                <Image
+                  src="/images/logo.svg"
+                  alt="logo"
+                  width={100}
+                  height={100}
+                />
+              </div>
               <div className="hidden h-6 text-2xl font-semibold sm:block">
                 My Blog
               </div>
