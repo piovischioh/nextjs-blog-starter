@@ -66,6 +66,7 @@ const Index = ({ posts }: PropsType) => (
                         <div className="flex flex-wrap">
                           {tags.map((tag) => (
                             <Link
+                              key={tag}
                               href={`/tags/${tag}`}
                               className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                             >
@@ -81,7 +82,7 @@ const Index = ({ posts }: PropsType) => (
                     <div className="text-base font-medium leading-6">
                       <Link
                         href={path}
-                        className="text-primary-400 hover:text-primary-500 dark:hover:text-primary-300"
+                        className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                         aria-label={`Read "${title}"`}
                       >
                         Read more &rarr;
