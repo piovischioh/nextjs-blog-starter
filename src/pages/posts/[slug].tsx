@@ -32,25 +32,31 @@ export const getStaticProps: GetStaticProps<PropsType> = ({ params }) => {
 };
 
 const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
-  const MDXContent = useMDXComponent(post.body.code);
+  const {
+    title,
+    description,
+    date,
+    body: { code },
+  } = post;
+  const MDXContent = useMDXComponent(code);
 
   return (
     <>
       <Head>
-        <title>{post.title}</title>
-        <meta name="description" content={post.description} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="prose dark:prose-invert">
-        <h1>{post.title}</h1>
-
-        <time dateTime={post.date}>
+      <div className="prose max-w-none duration-500 dark:prose-invert">
+        <time dateTime={date}>
           {format(parseISO(post.date), 'LLLL d, yyyy')}
         </time>
 
+        <h1>{title}</h1>
+
         <MDXContent />
-      </main>
+      </div>
     </>
   );
 };

@@ -16,7 +16,8 @@
     "next-contentlayer": "^0.2.9",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "rehype-prism-plus": "^1.5.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.0.6",
