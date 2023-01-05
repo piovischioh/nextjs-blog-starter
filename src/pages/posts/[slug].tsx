@@ -5,10 +5,15 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
+import Pre from '@/components/Pre';
 
 interface PropsType {
   post: Post;
 }
+
+const mdxComponents = {
+  pre: Pre,
+};
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = allPosts.map((post) => post.path);
@@ -55,7 +60,7 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
 
         <h1>{title}</h1>
 
-        <MDXContent />
+        <MDXContent components={mdxComponents} />
       </div>
     </>
   );
