@@ -22,3 +22,6 @@ next-env.d.ts
 
 # Contentlayer
 .contentlayer
+
+# scripts
+/scripts

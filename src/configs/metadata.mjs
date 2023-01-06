@@ -1,6 +1,7 @@
 const fqdn = 'https://piovischioh-nextjs-blog-starter.vercel.app';
 const logoPath = '/images/logo.svg';
 const bannerPath = '/images/banner.png';
+
 const metadata = {
   title: 'Next.js Blog Starter',
   description:
@@ -13,6 +14,8 @@ const metadata = {
   bannerUrl: fqdn + bannerPath,
   twitterID: '@dorohedoro',
   datePublished: '2023-01-01',
+  credit: 'Dorohedoro',
+  email: 'dorohedoro@example.com',
 };
 
 export default metadata;

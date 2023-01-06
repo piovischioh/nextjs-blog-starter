@@ -4,7 +4,7 @@ import { compareDesc, format, parseISO } from 'date-fns';
 
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
-import metadata from '@/configs/metadata';
+import metadata from '@/configs/metadata.mjs';
 
 interface PropsType {
   posts: Post[];

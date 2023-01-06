@@ -6,7 +6,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
 import Pre from '@/components/Pre';
-import metadata from '@/configs/metadata';
+import metadata from '@/configs/metadata.mjs';
 
 interface PropsType {
   post: Post;

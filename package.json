@@ -5,13 +5,14 @@
   "scripts": {
     "compose": "node ./scripts/compose.mjs",
     "dev": "next dev",
-    "build": "next build && next-sitemap --config next-sitemap.config.js",
+    "build": "next build && next-sitemap --config next-sitemap.config.js && node ./scripts/generate-rss.mjs",
     "start": "next start",
     "prepare": "husky install"
   },
   "dependencies": {
     "contentlayer": "^0.2.9",
     "date-fns": "^2.29.3",
+    "feed": "^4.2.2",
     "next": "13.0.6",
     "next-contentlayer": "^0.2.9",
     "next-seo": "^5.15.0",
