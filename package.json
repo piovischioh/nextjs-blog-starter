@@ -5,7 +5,7 @@
   "scripts": {
     "compose": "node ./scripts/compose.mjs",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "prepare": "husky install"
   },
@@ -45,6 +45,7 @@
     "husky": "^8.0.0",
     "inquirer": "^9.1.4",
     "lint-staged": "^13.1.0",
+    "next-sitemap": "^3.1.44",
     "postcss": "^8.4.20",
     "prettier": "^2.8.1",
     "prettier-plugin-tailwindcss": "^0.2.1",
