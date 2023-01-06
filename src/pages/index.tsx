@@ -1,9 +1,10 @@
-import Head from 'next/head';
 import Link from 'next/link';
+import { ArticleJsonLd } from 'next-seo';
 import { compareDesc, format, parseISO } from 'date-fns';
 
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
+import metadata from '@/configs/metadata';
 
 interface PropsType {
   posts: Post[];
@@ -19,11 +20,15 @@ const MAX_DISPLAY = 5;
 
 const Index = ({ posts }: PropsType) => (
   <>
-    <Head>
-      <title>My Blog</title>
-      <meta name="description" content="Welcome to my blog!" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+    <ArticleJsonLd
+      type="Blog"
+      url={metadata.fqdn}
+      title={metadata.title}
+      images={[metadata.bannerUrl]}
+      datePublished={metadata.datePublished}
+      authorName={metadata.author}
+      description={metadata.description}
+    />
 
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">

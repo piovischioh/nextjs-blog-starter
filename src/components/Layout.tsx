@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import Image from 'next/image';
 
-import navLinks from '@/data/navLinks';
+import navLinks from '@/configs/navLinks';
 import Link from './Link';
 import MobileNav from './MobileNav';
 import ThemeSwitch from './ThemeSwitch';

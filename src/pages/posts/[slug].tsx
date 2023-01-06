@@ -1,11 +1,12 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
 import { format, parseISO } from 'date-fns';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
 import Pre from '@/components/Pre';
+import metadata from '@/configs/metadata';
 
 interface PropsType {
   post: Post;
@@ -41,17 +42,43 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
     title,
     description,
     date,
+    path,
+    images,
     body: { code },
   } = post;
+  const url = metadata.fqdn + path;
   const MDXContent = useMDXComponent(code);
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={url}
+        openGraph={{
+          title,
+          description,
+          url,
+          images: !images?.length
+            ? [{ url: metadata.bannerUrl }]
+            : images.map((image) => ({ url: image })),
+          type: 'article',
+          article: {
+            publishedTime: date,
+            modifiedTime: date,
+          },
+        }}
+      />
+
+      <ArticleJsonLd
+        url={url}
+        title={title}
+        images={!images?.length ? [metadata.bannerUrl] : images}
+        datePublished={date}
+        dateModified={date}
+        authorName={metadata.author}
+        description={description}
+      />
 
       <div className="prose max-w-none duration-500 dark:prose-invert">
         <time dateTime={date}>

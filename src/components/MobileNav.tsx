@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
-import navLinks from '@/data/navLinks';
+import navLinks from '@/configs/navLinks';
 import Link from './Link';
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false);
 
-  const onToggleNav = () => {
+  const onToggleNav = useCallback(() => {
     setNavShow((status) => {
       if (status) {
         document.body.style.overflow = 'auto';
@@ -15,7 +15,7 @@ const MobileNav = () => {
       }
       return !status;
     });
-  };
+  }, []);
 
   return (
     <div className="sm:hidden">

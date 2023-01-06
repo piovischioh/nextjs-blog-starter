@@ -24,6 +24,10 @@ export const Post = defineDocumentType(() => ({
       type: 'date',
       required: true,
     },
+    images: {
+      type: 'list',
+      of: { type: 'string' },
+    },
     draft: {
       type: 'boolean',
       required: true,
