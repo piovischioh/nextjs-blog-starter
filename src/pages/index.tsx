@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { ArticleJsonLd } from 'next-seo';
 import { compareDesc, format, parseISO } from 'date-fns';
 
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
+import Link from '@/components/Link';
 import metadata from '@/configs/metadata.mjs';
 
 interface PropsType {

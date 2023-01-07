@@ -6,14 +6,16 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
 import Pre from '@/components/Pre';
+import Headings from '@/components/Headings';
 import metadata from '@/configs/metadata.mjs';
 
 interface PropsType {
   post: Post;
 }
 
-const mdxComponents = {
+const MDXComponents = {
   pre: Pre,
+  ...Headings,
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -47,7 +49,7 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
     body: { code },
   } = post;
   const url = metadata.fqdn + path;
-  const MDXContent = useMDXComponent(code);
+  const MDXComponent = useMDXComponent(code);
 
   return (
     <>
@@ -87,7 +89,7 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
 
         <h1>{title}</h1>
 
-        <MDXContent components={mdxComponents} />
+        <MDXComponent components={MDXComponents} />
       </div>
     </>
   );
