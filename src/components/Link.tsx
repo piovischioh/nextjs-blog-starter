@@ -1,23 +1,23 @@
-import type { LinkProps } from 'next/link';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 
 const CustomLink = ({
   href,
   children,
   ...rest
-}: LinkProps & { children: ReactNode; className?: string }) => {
-  const isInternalLink = typeof href === 'object' || href.startsWith('/');
+}: ComponentPropsWithoutRef<'a'>) => {
+  const isInternalLink =
+    (href && href.startsWith('/')) || typeof href === 'object';
 
   if (isInternalLink) {
     return (
-      <Link href={href} {...rest}>
+      <Link prefetch href={href} {...rest}>
         {children}
       </Link>
     );
   }
 
-  const isAnchorLink = href.startsWith('#');
+  const isAnchorLink = href && href.startsWith('#');
 
   if (isAnchorLink) {
     return (
