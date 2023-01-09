@@ -3,6 +3,7 @@ import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkImgToJsx from './src/plugin/remark-img-to-jsx';
+import headingsResolver from './src/plugin/headings-resolver';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -43,6 +44,10 @@ export const Post = defineDocumentType(() => ({
     filename: {
       type: 'string',
       resolve: ({ _raw: { sourceFileName } }) => sourceFileName.split('.')[0],
+    },
+    headings: {
+      type: 'nested',
+      resolve: headingsResolver,
     },
   },
 }));
