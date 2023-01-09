@@ -7,12 +7,11 @@ const headingResolver = ({ body: { raw } }: Post) =>
     .filter((line) => line.match(/^###?\s/))
     .map((line) => {
       const text = line.replace(/^###*\s/, '');
-      const primary = line.startsWith('###');
 
       return {
         text,
         url: `#${slug(text)}`,
-        primary,
+        primary: !line.startsWith('###'),
       };
     });
 

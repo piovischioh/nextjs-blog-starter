@@ -9,6 +9,7 @@ import Image from '@/components/Image';
 import Link from '@/components/Link';
 import Headings from '@/components/Headings';
 import Pre from '@/components/Pre';
+import TOC from '@/components/TOC';
 import metadata from '@/configs/metadata.mjs';
 
 interface PropsType {
@@ -50,6 +51,7 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
     date,
     path,
     images,
+    headings,
     body: { code },
   } = post;
   const url = metadata.fqdn + path;
@@ -86,15 +88,19 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
         description={description}
       />
 
-      <div className="prose max-w-none duration-500 dark:prose-invert">
-        <time dateTime={date}>
-          {format(parseISO(post.date), 'LLLL d, yyyy')}
-        </time>
+      <article className="duration-300 lg:grid lg:grid-cols-4 lg:gap-x-8">
+        <div className="prose max-w-none dark:prose-invert lg:col-span-3">
+          <time dateTime={date}>
+            {format(parseISO(post.date), 'LLLL d, yyyy')}
+          </time>
 
-        <h1>{title}</h1>
+          <h1>{title}</h1>
 
-        <MDXComponent components={MDXComponents} />
-      </div>
+          <MDXComponent components={MDXComponents} />
+        </div>
+
+        <TOC headings={headings} />
+      </article>
     </>
   );
 };
