@@ -5,6 +5,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
+import Image from '@/components/Image';
 import Link from '@/components/Link';
 import Headings from '@/components/Headings';
 import Pre from '@/components/Pre';
@@ -15,6 +16,7 @@ interface PropsType {
 }
 
 const MDXComponents = {
+  Image,
   a: Link,
   pre: Pre,
   ...Headings,

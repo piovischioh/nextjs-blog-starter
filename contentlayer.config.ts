@@ -2,6 +2,7 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
+import remarkImgToJsx from './src/plugin/remark-img-to-jsx';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -51,6 +52,7 @@ export default makeSource({
   contentDirInclude: ['posts'],
   documentTypes: [Post],
   mdx: {
+    remarkPlugins: [remarkImgToJsx],
     rehypePlugins: [
       rehypeCodeTitles,
       [rehypePrism, { ignoreMissing: true }],
