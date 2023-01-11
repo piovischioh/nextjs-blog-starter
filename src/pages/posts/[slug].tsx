@@ -5,6 +5,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
+import Comments from '@/components/Comments';
 import Image from '@/components/Image';
 import Link from '@/components/Link';
 import Headings from '@/components/Headings';
@@ -97,6 +98,8 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
           <h1>{title}</h1>
 
           <MDXComponent components={MDXComponents} />
+
+          <Comments />
         </div>
 
         <TOC headings={headings} />
