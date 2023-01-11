@@ -11,7 +11,7 @@ const CustomLink = ({
 
   if (isInternalLink) {
     return (
-      <Link prefetch href={href} {...rest}>
+      <Link href={href} {...rest}>
         {children}
       </Link>
     );
