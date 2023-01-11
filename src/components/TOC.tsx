@@ -51,6 +51,7 @@ const TOC = ({ headings }: PropsType) => {
               }`}
               onClick={(e) => {
                 e.preventDefault();
+                window.history.pushState(null, '', url);
                 document.querySelector(url)?.scrollIntoView({
                   behavior: 'smooth',
                   block: 'start',
