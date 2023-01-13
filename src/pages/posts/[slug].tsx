@@ -91,7 +91,7 @@ const PostPage: NextPage<PropsType> = ({ post }: PropsType) => {
 
       <article className="duration-300 lg:grid lg:grid-cols-4 lg:gap-x-8">
         <div className="prose max-w-none dark:prose-invert lg:col-span-3">
-          <time dateTime={date}>
+          <time dateTime={date} className="text-gray-500 dark:text-gray-400">
             {format(parseISO(post.date), 'LLLL d, yyyy')}
           </time>
 

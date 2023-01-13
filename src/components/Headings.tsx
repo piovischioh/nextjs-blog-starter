@@ -11,7 +11,7 @@ const Heading = ({ id, children, Component, ...props }: PropsType) => (
   <Component id={id} {...props}>
     <Link
       href={`#${id}`}
-      className="relative no-underline after:absolute after:top-1/2 after:ml-2 after:inline-flex after:h-6 after:w-6 after:-translate-y-1/2 after:items-center after:justify-center after:rounded-md after:border after:border-primary-600 after:text-base after:text-primary-600 after:opacity-0 after:duration-300 after:content-['#'] hover:after:opacity-100 dark:after:border-primary-400 dark:after:text-primary-400"
+      className="relative no-underline after:absolute after:top-1/2 after:ml-2 after:hidden after:h-6 after:w-6 after:-translate-y-1/2 after:items-center after:justify-center after:rounded-md after:border after:border-primary-600 after:text-base after:text-primary-600 after:duration-300 after:content-['#'] hover:after:inline-flex dark:after:border-primary-400 dark:after:text-primary-400"
       onClick={(e) => {
         e.preventDefault();
         window.history.pushState(null, '', `#${id}`);

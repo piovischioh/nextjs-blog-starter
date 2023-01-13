@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.contains-task-list {
+  @apply p-0;
+}
+
+.task-list-item::before {
+  @apply hidden;
+}
+
+.task-list-item {
+  @apply list-none space-x-1 pl-0;
+}
+
+.task-list-item input {
+  @apply mr-1;
+}
+
+.footnotes {
+  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+}
+
 @layer base {
   body {
     @apply duration-500;
