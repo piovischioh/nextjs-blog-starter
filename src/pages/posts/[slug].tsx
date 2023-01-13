@@ -25,7 +25,9 @@ const MDXComponents = {
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = allPosts.map((post) => post.path);
+  const paths = allPosts.map(({ filename }) => ({
+    params: { slug: filename },
+  }));
 
   return {
     paths,
@@ -33,7 +35,9 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<PropsType> = ({ params }) => {
+export const getStaticProps: GetStaticProps<PropsType, { slug: string }> = ({
+  params,
+}) => {
   const post = allPosts.find((_post) => _post.filename === params?.slug);
 
   if (!post) return { notFound: true };
