@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import clsx from 'clsx';
 
 import headingsResolver from '@/plugin/headings-resolver';
 import Link from './Link';
@@ -42,11 +43,13 @@ const TOC = ({ headings }: PropsType) => {
             <Link
               key={text}
               href={url}
-              className={`text-sm hover:underline ${!primary ? ' pl-4' : ''}${
-                `#${activeId}` === url
-                  ? ' text-primary-600 dark:text-primary-400'
-                  : ''
-              }`}
+              className={clsx(
+                'text-sm hover:underline',
+                primary ? null : 'pl-4',
+                `#${activeId}` !== url
+                  ? null
+                  : 'text-primary-600 dark:text-primary-400',
+              )}
               onClick={(e) => {
                 e.preventDefault();
                 window.history.pushState(null, '', url);
