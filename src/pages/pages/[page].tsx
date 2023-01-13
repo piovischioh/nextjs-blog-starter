@@ -1,12 +1,12 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useState } from 'react';
 import { ArticleJsonLd } from 'next-seo';
-import { compareDesc, format, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
 import type { Post } from 'contentlayer/generated';
-import { allPosts } from 'contentlayer/generated';
 import Link from '@/components/Link';
 import metadata from '@/configs/metadata.mjs';
+import allPosts from '@/utils/getPostsByDescDate';
 
 export interface PropsType {
   posts: Post[];
@@ -39,18 +39,15 @@ export const getStaticProps: GetStaticProps<
 
   if (Number.isNaN(pageNumber)) return { notFound: true };
 
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date)),
-  );
-  const initialDisplayPosts = posts.slice(
+  const initialDisplayPosts = allPosts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber,
   );
   const pagination = {
     currentPage: pageNumber,
-    totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
+    totalPages: Math.ceil(allPosts.length / POSTS_PER_PAGE),
   };
-  return { props: { posts, initialDisplayPosts, pagination } };
+  return { props: { posts: allPosts, initialDisplayPosts, pagination } };
 };
 
 const PostsPage: NextPage<PropsType> = ({
@@ -167,7 +164,7 @@ const PostsPage: NextPage<PropsType> = ({
           <nav className="flex items-center justify-center space-x-3">
             {currentPage === 1 ? null : (
               <Link
-                className=""
+                className="text-primary-600 dark:text-primary-500"
                 href={currentPage - 1 === 1 ? '/' : `/pages/${currentPage - 1}`}
               >
                 <svg
@@ -187,7 +184,7 @@ const PostsPage: NextPage<PropsType> = ({
             </span>
             {currentPage === totalPages ? null : (
               <Link
-                className="text-primary-500"
+                className="text-primary-600 dark:text-primary-500"
                 href={`/pages/${currentPage + 1}`}
               >
                 <svg
