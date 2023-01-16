@@ -11,7 +11,7 @@ import Headings from '@/components/Headings';
 import Pre from '@/components/Pre';
 import TOC from '@/components/TOC';
 import metadata from '@/configs/metadata.mjs';
-import allPosts from '@/utils/getPostsByDescDate';
+import getPostsByDescDate from '@/utils/getPostsByDescDate';
 
 interface PropsType {
   post: Post;
@@ -25,7 +25,7 @@ const MDXComponents = {
 };
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = allPosts.map(({ filename }) => ({
+  const paths = getPostsByDescDate().map(({ filename }) => ({
     params: { slug: filename },
   }));
 
@@ -38,7 +38,9 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps<PropsType, { slug: string }> = ({
   params,
 }) => {
-  const post = allPosts.find((_post) => _post.filename === params?.slug);
+  const post = getPostsByDescDate().find(
+    (_post) => _post.filename === params?.slug,
+  );
 
   if (!post) return { notFound: true };
 

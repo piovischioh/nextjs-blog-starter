@@ -10,7 +10,7 @@ import metadata from '../src/configs/metadata.mjs';
     email: metadata.email,
     link: metadata.fqdn,
   };
-  const posts = allPosts.sort((a, b) =>
+  const posts = allPosts.filter(post => !post.draft).sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
 

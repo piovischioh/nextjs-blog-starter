@@ -2,7 +2,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import type { Post } from 'contentlayer/generated';
 import PostList from '@/components/PostList';
-import allPosts from '@/utils/getPostsByDescDate';
+import getPostsByDescDate from '@/utils/getPostsByDescDate';
 
 export interface PropsType {
   posts: Post[];
@@ -16,7 +16,7 @@ export interface PropsType {
 export const POSTS_PER_PAGE = 5;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(getPostsByDescDate().length / POSTS_PER_PAGE);
   const paths = Array.from({ length: totalPages }, (_, i) => ({
     params: { page: (i + 1).toString() },
   }));
@@ -35,6 +35,7 @@ export const getStaticProps: GetStaticProps<
 
   if (Number.isNaN(pageNumber)) return { notFound: true };
 
+  const allPosts = getPostsByDescDate();
   const initialDisplayPosts = allPosts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber,

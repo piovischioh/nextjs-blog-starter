@@ -3,7 +3,7 @@ import { slug } from 'github-slugger';
 
 import type { Post } from 'contentlayer/generated';
 import PostList from '@/components/PostList';
-import allPosts from '@/utils/getPostsByDescDate';
+import getPostsByDescDate from '@/utils/getPostsByDescDate';
 import getTags from '@/utils/getTags';
 
 interface PropsType {
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<
 > = async ({ params }) => {
   if (!params?.tag) return { notFound: true };
 
-  const posts = allPosts.filter(({ tags }) =>
+  const posts = getPostsByDescDate().filter(({ tags }) =>
     tags.find((tag) => slug(tag) === params.tag),
   );
   const tag = params.tag

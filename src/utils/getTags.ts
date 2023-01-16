@@ -1,11 +1,11 @@
 import { slug } from 'github-slugger';
 
-import { allPosts } from 'contentlayer/generated';
+import getPostsByDescDate from './getPostsByDescDate';
 
 const getTags = () => {
   const tags: { [tag: string]: number } = {};
 
-  allPosts.forEach((post) => {
+  getPostsByDescDate().forEach((post) => {
     post.tags.forEach((tag) => {
       const formattedTag = slug(tag);
       if (formattedTag in tags) {

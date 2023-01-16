@@ -2,6 +2,13 @@ import { compareDesc } from 'date-fns';
 
 import { allPosts } from 'contentlayer/generated';
 
-export default allPosts.sort((a, b) =>
-  compareDesc(new Date(a.date), new Date(b.date)),
-);
+const getPostsByDescDate = () => {
+  if (process.env.NODE_ENV === 'production')
+    return allPosts.filter((post) => !post.draft);
+
+  return allPosts.sort((a, b) =>
+    compareDesc(new Date(a.date), new Date(b.date)),
+  );
+};
+
+export default getPostsByDescDate;
