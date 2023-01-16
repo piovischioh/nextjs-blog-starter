@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 
 import navLinks from '@/configs/navLinks';
+import metadata from '@/configs/metadata.mjs';
 import Link from './Link';
 import MobileNav from './MobileNav';
 import ThemeSwitch from './ThemeSwitch';
@@ -22,7 +23,7 @@ const Layout = ({ children }: { children: ReactNode }) => (
                 />
               </div>
               <div className="hidden h-6 text-2xl font-semibold sm:block">
-                My Blog
+                {metadata.title}
               </div>
             </div>
           </Link>
@@ -52,7 +53,6 @@ const Layout = ({ children }: { children: ReactNode }) => (
           <Link href="https://github.com/piovischioh/nextjs-blog-starter">
             Next.js Blog Starter
           </Link>
-          <div>{' • '}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
         </div>
       </footer>

@@ -1,0 +1,102 @@
+---
+type: Post
+title: Markdown For The Component Era
+description: MDX allows you to use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content. This makes writing long-form content with components a blast.
+tags: ['mdx', 'guide']
+date: 2022-12-21
+draft: false
+---
+
+MDX allows you to use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content. This makes writing long-form content with components a blast.
+
+## a
+
+```md
+[Go to homepage](/)
+
+[Go to img title](#img)
+
+[MDX](https://mdxjs.com 'title')
+```
+
+<p>
+  <a href="/">Go to homepage</a>
+</p>
+<p>
+  <a href="#img">Go to img title</a>
+</p>
+<p>
+  <a href="https://mdxjs.com">MDX</a>
+</p>
+
+## blockquote
+
+```md
+> A greater than…
+```
+
+<blockquote>
+  <p>A greater than…</p>
+</blockquote>
+
+## br
+
+```md
+A backslash\
+before a line break…
+```
+
+<div>
+  A backslash
+  <br />
+  before a line break…
+</div>
+
+## em
+
+```md
+Some _asterisks_ for emphasis.
+```
+
+<div>
+  Some <em>asterisks</em> for emphasis.
+</div>
+
+## code
+
+````md
+Some `backticks` for inline.
+
+```js
+backtick.fences('for blocks');
+```
+````
+
+<div>
+  Some <code>backticks</code> for inline.
+</div>
+<pre>
+  <code className="language-javascript">backtick.fences('for blocks')</code>
+</pre>
+
+## img
+
+```md
+w/ next/image
+![Banner](/images/banner.png)
+
+w/o next/image
+
+<img src="/images/banner.png" alt="Banner" />
+```
+
+w/ next/image
+![Banner](/images/banner.png)
+
+w/o next/image
+
+<img src="/images/banner.png" alt="Banner" />
+
+## More
+
+More demonstration on [MDX](https://mdxjs.com/table-of-components/)

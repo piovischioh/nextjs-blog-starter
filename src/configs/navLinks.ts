@@ -1,6 +1,3 @@
-const navLinks = [
-  { href: '/tags', title: 'Tags' },
-  { href: '/about', title: 'About' },
-];
+const navLinks = [{ href: '/tags', title: 'Tags' }];
 
 export default navLinks;
