@@ -1,9 +1,15 @@
-import type { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
+import type { Post } from 'contentlayer/generated';
+import PostList from '@/components/PostList';
 import allPosts from '@/utils/getPostsByDescDate';
 import getTags from '@/utils/getTags';
-import type { PropsType } from '../pages/[page]';
-import PostsPage from '../pages/[page]';
+
+interface PropsType {
+  tag: string;
+  posts: Post[];
+  initialDisplayPosts: Post[];
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { sortedTags } = getTags();
@@ -21,7 +27,27 @@ export const getStaticProps: GetStaticProps<
   if (!params?.tag) return { notFound: true };
 
   const posts = allPosts.filter(({ tags }) => tags.includes(params.tag));
+  const tag = params.tag
+    .split('-')
+    .reduce(
+      (prev, current) =>
+        `${prev} ${current[0].toUpperCase()}${current.slice(1)}`,
+      '',
+    )
+    .trim();
 
-  return { props: { posts, initialDisplayPosts: posts } };
+  return { props: { posts, initialDisplayPosts: posts, tag } };
 };
-export default PostsPage;
+const TagPage: NextPage<PropsType> = ({
+  tag,
+  posts,
+  initialDisplayPosts,
+}: PropsType) => (
+  <PostList
+    listTitle={tag}
+    posts={posts}
+    initialDisplayPosts={initialDisplayPosts}
+  />
+);
+
+export default TagPage;
