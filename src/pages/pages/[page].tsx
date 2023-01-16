@@ -5,6 +5,7 @@ import { format, parseISO } from 'date-fns';
 
 import type { Post } from 'contentlayer/generated';
 import Link from '@/components/Link';
+import Tag from '@/components/Tag';
 import metadata from '@/configs/metadata.mjs';
 import allPosts from '@/utils/getPostsByDescDate';
 
@@ -135,13 +136,7 @@ const PostsPage: NextPage<PropsType> = ({
                             </h2>
                             <div className="flex flex-wrap">
                               {tags.map((tag) => (
-                                <Link
-                                  key={tag}
-                                  href={`/tags/${tag}`}
-                                  className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                                >
-                                  {tag.split(' ').join('-')}
-                                </Link>
+                                <Tag key={tag} text={tag} />
                               ))}
                             </div>
                           </div>
