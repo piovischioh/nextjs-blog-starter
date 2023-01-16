@@ -6,7 +6,8 @@ import { format } from 'date-fns';
 
 const genFrontMatter = (answers) => {
   const date = answers.date || format(new Date(), 'yyyy-MM-dd');
-  const tagArray = answers.tags.split(',');
+  const tagArray = answers.tags.toLowerCase().split(',');
+  tagArray.forEach((tag, index) => (tagArray[index] = tag.replace(/\s+/g, ' ').trim()));
   const tags = `'${tagArray.join('\',\'')}'`;
 
   let frontMatter = dedent`---

@@ -1,4 +1,5 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { slug } from 'github-slugger';
 
 import type { Post } from 'contentlayer/generated';
 import PostList from '@/components/PostList';
@@ -26,7 +27,9 @@ export const getStaticProps: GetStaticProps<
 > = async ({ params }) => {
   if (!params?.tag) return { notFound: true };
 
-  const posts = allPosts.filter(({ tags }) => tags.includes(params.tag));
+  const posts = allPosts.filter(({ tags }) =>
+    tags.find((tag) => slug(tag) === params.tag),
+  );
   const tag = params.tag
     .split('-')
     .reduce(
