@@ -54,7 +54,7 @@ inquirer
     },
     {
       name: 'date',
-      message: 'Enter specific post date, e.g. 2022-12-29, or leave empty and use default system date',
+      message: 'Enter specific post date, e.g. 2022-12-29, or leave empty and use system default date',
       type: 'input',
     },
     {
