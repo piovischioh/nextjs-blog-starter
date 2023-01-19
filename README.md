@@ -10,6 +10,7 @@ This is a [Next.js](https://nextjs.org/) blog starter project modified and optim
 
 - Writing posts in [github flavored markdown](https://github.github.com/gfm/) or JSX with [MDX](https://mdxjs.com/)
 - Posts frontmatter and structure transforming by [Contentlayer](https://www.contentlayer.dev/)
+- Auto generated table of content in posts based on headings
 - Optimized Code block with syntax highlighting, code title and copy utility
 - Styling both blog and posts with [tailwindcss](https://tailwindcss.com/)
 - Dark mode optimized with [next-themes](https://github.com/pacocoursey/next-themes) and [tailwindcss](https://tailwindcss.com/)
