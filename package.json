@@ -5,7 +5,7 @@
   "scripts": {
     "compose": "node ./scripts/compose.mjs",
     "dev": "next dev",
-    "build": "next build && next-sitemap --config next-sitemap.config.js && node ./scripts/generate-rss.mjs",
+    "build": "next build && next-sitemap --config next-sitemap.config.mjs && node ./scripts/generate-rss.mjs",
     "start": "next start",
     "prepare": "husky install"
   },
