@@ -34,7 +34,7 @@ const Layout = ({ children }: { children: ReactNode }) => (
               <Link
                 key={link.title}
                 href={link.href}
-                className="p-1 text-gray-900 dark:text-gray-100 sm:p-4"
+                className="p-1 font-semibold text-gray-900 dark:text-gray-100 sm:p-4"
               >
                 {link.title}
               </Link>
@@ -48,12 +48,18 @@ const Layout = ({ children }: { children: ReactNode }) => (
 
       <main className="mb-auto">{children}</main>
 
-      <footer>
-        <div className="mt-16 mb-8 flex items-center justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+      <footer className="mt-16 flex flex-col items-center">
+        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <div>{metadata.author}</div>
+          <div>{' • '}</div>
+          <div>{`© ${new Date().getFullYear()}`}</div>
+          <div>{' • '}</div>
+          <Link href="/">{metadata.title}</Link>
+        </div>
+        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
           <Link href="https://github.com/piovischioh/nextjs-blog-starter">
             Next.js Blog Starter
           </Link>
-          <div>{`© ${new Date().getFullYear()}`}</div>
         </div>
       </footer>
     </div>
