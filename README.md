@@ -15,7 +15,8 @@ This is a [Next.js](https://nextjs.org/) blog starter project modified and optim
 - Styling both blog and posts with [tailwindcss](https://tailwindcss.com/)
 - Dark mode optimized with [next-themes](https://github.com/pacocoursey/next-themes) and [tailwindcss](https://tailwindcss.com/)
 - Comment system by [giscus](https://giscus.app/)
-- Auto generated RSS feed and sitemaps with [next-seo](https://github.com/garmeeh/next-seo)
+- Auto generated RSS feed and sitemaps
+- Managing SEO by [next-seo](https://github.com/garmeeh/next-seo)
 
 ## Compose
 
