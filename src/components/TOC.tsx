@@ -15,17 +15,31 @@ const TOC = ({ headings }: PropsType) => {
   const [activeId, setActiveId] = useState<string>();
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        headingElements.current[entry.target.id] = entry;
-      });
+    // IntersectionObserver callback.
+    // The current logic iterates through all observed headings (headingElements.current)
+    // on each intersection change to find the first one (in DOM order, assuming key order holds)
+    // that is currently intersecting the viewport.
+    // This has a potential O(H) complexity (H = total number of headings on the page),
+    // which might become a performance consideration for pages with a very large number of headings.
+    // Future optimization could involve processing only the 'entries' array or maintaining a
+    // sorted list of currently visible headings.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          headingElements.current[entry.target.id] = entry;
+        });
 
-      const id = Object.keys(headingElements.current).find(
-        (key) => headingElements.current[key].isIntersecting,
-      );
+        const id = Object.keys(headingElements.current).find(
+          (key) => headingElements.current[key].isIntersecting,
+        );
 
-      if (id) setActiveId(id);
-    });
+        if (id) setActiveId(id);
+      },
+      // As a future UX refinement, IntersectionObserver options like 'rootMargin' or 'threshold'
+      // could be used here to fine-tune when a heading is considered "active".
+      // For example, to make it active only when it's more centrally located in the viewport.
+      // e.g., { rootMargin: "-20% 0px -70% 0px", threshold: 0.1 }
+    );
 
     Array.from(document.querySelectorAll('article h2,h3')).forEach((element) =>
       observer.observe(element),
